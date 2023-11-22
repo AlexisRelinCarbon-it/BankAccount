@@ -55,7 +55,8 @@ public class AccountService implements AccountServiceApi {
 
     @Override
     public String printStatement(UUID accountId, Formatter formatter) {
-        return null;
+        return formatter.format(
+                transactionRepository.getHistory(accountId));
     }
 
     private void verifyAmountCompliance(BigDecimal amount) throws NegativeAmountException {
